@@ -1,11 +1,13 @@
-LOCAL_PATH 		:=$(call my-dir)
+LOCAL_PATH:= $(call my-dir)
 
-include $(CLEAR_VARS)
-LOCAL_MODULE		:= NxBackGearService
-LOCAL_SRC_FILES		:= app/NxBackGearService.apk
-LOCAL_MODULE_PATH	:= $(TARGET_OUT_APPS)
-LOCAL_MODULE_CLASS	:= APPS
-LOCAL_MODULE_OWNER	:= NEXELL
-LOCAL_MODULE_TAGS	:= optional
-LOCAL_CERTIFICATE	:= PRESIGNED
-include $(BUILD_PREBUILT)
+PREBUILT_LIBRARY_PATH := $(LOCAL_PATH)/library/prebuilt/
+LIBRARY_PATH := $(LOCAL_PATH)/library
+APP_PATH := $(LOCAL_PATH)/app
+JNI_LIB_PATH := $(LOCAL_PATH)/jni
+
+include $(PREBUILT_LIBRARY_PATH)/libnxavm_client/Android.mk
+include $(PREBUILT_LIBRARY_PATH)/libnxsvm/Android.mk
+include $(LIBRARY_PATH)/libnxgpiocontrol/Android.mk
+include $(JNI_LIB_PATH)/Android.mk
+
+include $(APP_PATH)/Android.mk
