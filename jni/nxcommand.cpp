@@ -258,6 +258,9 @@ void  NX_CCommand::ThreadProc()
         }
 
     }
+
+    remove(m_pStopCmdFileName);
+
 #endif
 }
 
